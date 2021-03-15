@@ -13,9 +13,10 @@ class MyApp extends StatelessWidget {
       title: 'Quick Delivery',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        accentColor: Colors.white,
+        accentColor: Colors.blueGrey[50],
         fontFamily: "QuickFont",
         highlightColor: Colors.blue[800],
+        scaffoldBackgroundColor: Colors.white,
       ),
       home: MainScreen(),
       debugShowCheckedModeBanner: false,

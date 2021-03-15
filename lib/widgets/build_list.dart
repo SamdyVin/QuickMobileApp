@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quick/models/services.dart';
 import 'package:quick/screens/detail.dart';
 import 'package:quick/screens/service_detail.dart';
 
@@ -71,43 +70,25 @@ class BuildList extends StatelessWidget {
 
   checkDetail(BuildContext context, int index) {
     if (!isService) {
-      return InkWell(
+      return GestureDetector(
         onTap: () {
-          _navigationHanlder(context, services[index]);
+          _navigationHanlder(context, items[index]);
         },
         child: Container(
           width: MediaQuery.of(context).size.width / (shortList ? 2 : 1.06),
           margin: EdgeInsets.only(right: marginHandler(index), top: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Theme.of(context).primaryColor,
-            image: DecorationImage(
-              image: NetworkImage(
-                items[index].image,
-              ),
-              fit: BoxFit.fitHeight,
-            ),
-          ),
+          decoration: _buildImage(context, index),
         ),
       );
     } else {
-      return InkWell(
+      return GestureDetector(
         onTap: () {
-          _navigationHanlder(context, services[index]);
+          _navigationHanlder(context, items[index]);
         },
         child: Container(
           width: MediaQuery.of(context).size.width / (shortList ? 2 : 1.06),
           margin: EdgeInsets.only(right: marginHandler(index), top: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Theme.of(context).primaryColor,
-            image: DecorationImage(
-              image: NetworkImage(
-                items[index].image,
-              ),
-              fit: BoxFit.fitHeight,
-            ),
-          ),
+          decoration: _buildImage(context, index),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -133,6 +114,19 @@ class BuildList extends StatelessWidget {
         ),
       );
     }
+  }
+
+  BoxDecoration _buildImage(BuildContext context, int index) {
+    return BoxDecoration(
+      borderRadius: BorderRadius.circular(10),
+      color: Theme.of(context).accentColor,
+      image: DecorationImage(
+        image: NetworkImage(
+          items[index].image,
+        ),
+        fit: BoxFit.cover,
+      ),
+    );
   }
 
   double marginHandler(int index) => (index != items.length - 1 ? 10 : 0);

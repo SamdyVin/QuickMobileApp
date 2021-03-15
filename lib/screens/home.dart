@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quick/models/services.dart';
+import 'package:quick/data/data.dart';
 import 'package:quick/widgets/build_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,8 +10,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Widget> events = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             BuildList(
-              items: services,
+              items: advertise,
             ),
             BuildList(
               title: "Services:",
@@ -55,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
             BuildList(
               icon: Icon(Icons.event),
               title: "Events:",
-              items: services,
+              items: events,
             ),
           ],
         ),
